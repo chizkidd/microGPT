@@ -243,7 +243,7 @@ Improvements over the original:
 4. **CLI config** — `--n_embd`, `--n_layer`, `--steps` etc. via `sys.argv`
 5. **checkpointing** — save/resume via `json`
 6. **top-k sampling** — `--topk k` at inference
-7. **`generate(prompt)`** — seeded inference, not just BOS sampling
+7. **`generate(prompt)`** — seeded inference, not just <BOS> sampling
 8. **loss plot** — matplotlib PNG with dark theme
 
 ### `run_microgpt.py` — PyTorch/GPU multi-dataset runner
