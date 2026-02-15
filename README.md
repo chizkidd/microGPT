@@ -103,7 +103,7 @@ chizkidd/microgpt/
 
 Generated at runtime (not committed):
 ```
-datasets/                # auto-downloaded, cached — never re-downloaded
+datasets/                # auto-downloaded, cached ; never re-downloaded
 outputs/
 └── <dataset>/
     ├── <dataset>_e{n_embd}_l{n_layer}_h{n_head}_s{steps}.png   # loss curve
@@ -169,9 +169,9 @@ python run_microgpt.py --steps 100
 
 Datasets are auto-downloaded on first run and cached in `datasets/`. Re-runs are instant.
 
-**discrete mode** — each sample is an independent short generation, stops at end-of-sequence. Good for names and words.
+**discrete mode:** each sample is an independent short generation, stops at end-of-sequence. Good for names and words.
 
-**stream mode** — generates a continuous text flow, treats end-of-sequence as a paragraph break and keeps going. Good for prose.
+**stream mode:** generates a continuous text flow, treats end-of-sequence as a paragraph break and keeps going. Good for prose.
 
 ---
 
@@ -213,7 +213,7 @@ i/o:
   --no-plot                  skip all matplotlib output (useful on headless servers)
 ```
 
-CLI flags override dataset defaults — the dataset registry is always the baseline, and anything passed on the command line wins on top:
+CLI flags override dataset defaults. The dataset registry is always the baseline, and anything passed on the command line wins on top:
 
 ```bash
 # use pokemon's config but bump the model size
@@ -233,27 +233,27 @@ python run_microgpt.py --list
 
 ## what's in each file
 
-### `gpt.py` — pure Python, no dependencies
-The original karpathy atomic GPT. Scalar autograd engine, character tokenizer, transformer forward pass, Adam optimizer — all from scratch in ~200 lines. Runs on CPU only, intentionally slow, maximally readable.
+### `gpt.py`: pure Python, no dependencies
+The original karpathy atomic GPT. Scalar autograd engine, character tokenizer, transformer forward pass, Adam optimizer. All from scratch in ~200 lines. Runs on CPU only, intentionally slow, maximally readable.
 
 Improvements over the original:
-1. **gradient clipping** — `max(-1, min(1, grad))` per parameter
-2. **EMA loss smoothing** — printed alongside raw loss every step
-3. **train/val split** — 90/10, val loss every 100 steps
-4. **CLI config** — `--n_embd`, `--n_layer`, `--steps` etc. via `sys.argv`
-5. **checkpointing** — save/resume via `json`
-6. **top-k sampling** — `--topk k` at inference
-7. **`generate(prompt)`** — seeded inference, not just <BOS> sampling
-8. **loss plot** — matplotlib PNG with dark theme
+1. **gradient clipping:** `max(-1, min(1, grad))` per parameter
+2. **EMA loss smoothing:** printed alongside raw loss every step
+3. **train/val split:** 90/10, val loss every 100 steps
+4. **CLI config:** `--n_embd`, `--n_layer`, `--steps` etc. via `sys.argv`
+5. **checkpointing:** save/resume via `json`
+6. **top-k sampling:** `--topk k` at inference
+7. **`generate(prompt)`:** seeded inference, not just `<BOS>` sampling
+8. **loss plot:** matplotlib PNG with dark theme 
 
-### `run_microgpt.py` — PyTorch/GPU multi-dataset runner
-The main script. Same GPT-2 style architecture as `gpt.py` but built with `torch.nn` for speed — runs on CUDA if available, falls back to CPU automatically. Wraps everything into a `train(name, url, **kwargs)` function and iterates over the dataset registry, auto-downloading and caching each dataset, then produces a per-dataset output folder and a combined loss plot at the end.
+### `run_microgpt.py`: PyTorch/GPU multi-dataset runner
+The main script. Same GPT-2 style architecture as `gpt.py` but built with `torch.nn` for speed, runs on CUDA if available, falls back to CPU automatically. Wraps everything into a `train(name, url, **kwargs)` function and iterates over the dataset registry, auto-downloading and caching each dataset, then produces a per-dataset output folder and a combined loss plot at the end.
 
 All 8 improvements from `gpt.py` are carried over, plus:
-- **live loss plot** — matplotlib window updates in real time during training (one per dataset)
-- **10-line logging** — prints exactly 10 progress lines per dataset (`n/10` steps), showing train loss, EMA, and val loss
-- **stream vs discrete inference** — Shakespeare and PG generate continuous prose; names/words generate independent short samples
-- **full `argparse` CLI** — all hyperparameters overridable from the command line, `.pt` checkpoints with optimizer state
+- **live loss plot:** matplotlib window updates in real time during training (one per dataset)
+- **10-line logging:** prints exactly 10 progress lines per dataset (`n/10` steps), showing train loss, EMA, and val loss
+- **stream vs discrete inference:** Shakespeare and PG generate continuous prose; names/words generate independent short samples
+- **full `argparse` CLI:** all hyperparameters overridable from the command line, `.pt` checkpoints with optimizer state
 
 ---
 
