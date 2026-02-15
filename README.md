@@ -1,3 +1,6 @@
+![all losses](assets/all_losses_20260215_050323.png)
+
+
 # microgpt
 
 A minimal, educational character-level GPT trained on multiple datasets, from Pokémon names to Paul Graham essays.
@@ -278,7 +281,7 @@ After training, each dataset produces:
 outputs/names/
 ├── names_e16_l1_h4_s2000.png    # train (raw), train (ema), val loss curves
 ├── names_e16_l1_h4_s2000.txt    # generated samples at inference temperature
-└── ckpt.pt                       # full model + optimizer state, resumable
+└── ckpt.pt                      # full model + optimizer state, resumable
 
 outputs/all_losses_20260214_143022.png   # all datasets in one figure
 ```
