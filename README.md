@@ -20,7 +20,7 @@ python run_microgpt.py \
 
 #### Output:
 
-```python
+```
   seed '':
 It's hardered to advantage of the companies software. I could had a particularly of startups will in a language to work them was people is another in a few a tried to be and in as people such it was the story one to the consist of clear of the country our and web-sackating that were the first ideas to angel why conceral the of say success,thisy are about it has and so one startup is that there's a startup the time the same always they were all the people who wanted for the startup that they were some ads, t
 
