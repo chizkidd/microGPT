@@ -1,4 +1,4 @@
-![all losses](assets/all_losses_20260215_050323.png)
+![all losses](assets/all_losses_20260215_111719_train_raw_ema.png)
 
 
 # microgpt
