@@ -213,6 +213,7 @@ Sample output after 5000 steps on `paul_graham`:
 ## Credit
 
 - Original Karpathy microGPT: [@karpathy](https://gist.github.com/karpathy/8627fe009c40f57531cb18360106ce95) 
+    - Karpathy blog [writeup](https://karpathy.github.io/2026/02/12/microgpt/) on microgpt.
 - PG essays dataset: [@sgoel97](https://github.com/sgoel97/essay-datasets)
 - Baby names: [karpathy/makemore](https://github.com/karpathy/makemore)
 - Shakespeare: [karpathy/char-rnn](https://github.com/karpathy/char-rnn)
