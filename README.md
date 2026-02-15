@@ -11,7 +11,7 @@ Built on top of [@karpathy](https://github.com/karpathy)'s atomic pure, dependen
 !python run_microgpt.py --only pokemon --steps 20000
 ```
 
-![!python run_microgpt2.py --only pokemon --steps 20000](assets/paul_graham_e64_l4_h4_s50000.png)
+![!python run_microgpt2.py --only pokemon --steps 20000](assets/pokemon_e32_l2_h4_s20000.png)
 ---
 
 ## files
