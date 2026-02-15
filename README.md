@@ -22,24 +22,28 @@ python run_microgpt.py \
 
 ```python
   seed '':
-It's hardered to advantage of the companies software. I could had a particularly of startups will in a language \
- to work them was people is another in a few a tried to be and in as people such it was the story one to the \
- consist of clear of the country our and web-sackating that were the first ideas to angel why conceral the of \
-  say success,thisy are about it has and so one startup is that there's a startup the time the same always they \
-   were all the people who wanted for the startup that they were some ads, t
+It's hardered to advantage of the companies software. I could had a particularly of startups \
+will in a language to work them was people is another in a few a tried to be and in as people \
+such it was the story one to the consist of clear of the country our and web-sackating that \
+were the first ideas to angel why conceral the of say success,thisy are about it has and \
+so one startup is that there's a startup the time the same always they were all the people \
+who wanted for the startup that they were some ads, t
 
   seed 'The ':
-The money including is through in the reason at the really the short is one so probably is that they can't have making art. \ There's always in the people whose will in in effect them, and business happened it to that it's hard to get our startups \
-to make out in a recessions. There is a millions and and something to take is an startup, founders of part that it \
-important, they enlike to selling bad it is also at the beauted to growth of exped to raise and be on the way the \
-schoolate of composed between every indiv
+The money including is through in the reason at the really the short is one so probably is \
+that they can't have making art. There's always in the people whose will in in effect them, \
+and business happened it to that it's hard to get our startups to make out in a recessions. \
+There is a millions and and something to take is an startup, founders of part that it important, \
+they enlike to selling bad it is also at the beauted to growth of exped to raise and be on the \
+way the schoolate of composed between every indiv
 
   seed 'I ':
-I wish wish that you don't have to be at the term help we trev. When I think they have to be path control the \
-best deal to say their way to have to do to for the things and the time, the problem of sities intervig the \
-our cases with but town in mostly, though is there is a replace to angel of contination of the and that's \
-angels. It'strinute to be situation a lot of suggests false the the core will was not secidate with \
-interesting to world. In the country as the acquisities and and money startup century have
+I wish wish that you don't have to be at the term help we trev. When I think they have to be \
+path control the best deal to say their way to have to do to for the things and the time, \
+the problem of sities intervig the our cases with but town in mostly, though is there is a \
+replace to angel of contination of the and that's angels. It'strinute to be situation a lot \
+of suggests false the the core will was not secidate with interesting to world. In the country\
+as the acquisities and and money startup century have
 ```
 
 ![!python run_microgpt.py --only paul_graham --steps 100000](assets/paul_graham_e64_l4_h4_s100000.png)
