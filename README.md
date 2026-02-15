@@ -1,6 +1,6 @@
 # microgpt
 
-A minimal, educational character-level GPT trained on multiple datasets — from Pokémon names to Paul Graham essays.
+A minimal, educational character-level GPT trained on multiple datasets, from Pokémon names to Paul Graham essays.
 
 Built on top of [@karpathy](https://github.com/karpathy)'s atomic pure, dependency-free Python-based GPT, ported to PyTorch with GPU support for speed and a multi-dataset training runner for variety.
 
