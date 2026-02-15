@@ -5,12 +5,16 @@ A minimal, educational character-level GPT trained on multiple datasets, from Po
 Built on top of [@karpathy](https://github.com/karpathy)'s atomic pure, dependency-free Python-based GPT, ported to PyTorch with GPU support for speed and a multi-dataset training runner for variety.
 
 
-## example
+## examples
+
+### 1. Dataset: Pokémon names
 
 ```python
-!python run_microgpt.py --only pokemon --steps 20000
+python run_microgpt.py --only pokemon --steps 20000
 ```
-### output:
+
+#### output:
+
 ```python
   sample  1: groudan
   sample  2: minior-yello
@@ -35,6 +39,20 @@ Built on top of [@karpathy](https://github.com/karpathy)'s atomic pure, dependen
 ```
 
 ![!python run_microgpt2.py --only pokemon --steps 20000](assets/pokemon_e32_l2_h4_s20000.png)
+
+### 2. Dataset: Paul graham essays
+
+```python
+python run_microgpt.py \
+    --only paul_graham \
+    --n-embd 64 \
+    --n-layer 4 \
+    --n-head 4 \
+    --steps 50000
+```
+
+![!python run_microgpt.py --only paul_graham --n-embd 64 --n-layer 4 --n-head 4 --steps 50000](assets/paul_graham_e64_l4_h4_s50000.png)
+
 ---
 
 ## files
