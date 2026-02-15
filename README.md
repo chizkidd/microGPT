@@ -10,6 +10,29 @@ Built on top of [@karpathy](https://github.com/karpathy)'s atomic pure, dependen
 ```python
 !python run_microgpt.py --only pokemon --steps 20000
 ```
+### output:
+```python
+  sample  1: groudan
+  sample  2: minior-yello
+  sample  3: sandol
+  sample  4: saluma
+  sample  5: magilly
+  sample  6: clobe
+  sample  7: groteen
+  sample  8: sederis
+  sample  9: gardragot-a
+  sample 10: charizard
+  sample 11: pikachu-seta
+  sample 12: metagunce
+  sample 13: piroade
+  sample 14: slowble
+  sample 15: pikachu-p-ta
+  sample 16: sandshrew
+  sample 17: salande
+  sample 18: storunke
+  sample 19: sediply
+  sample 20: gagon
+```
 
 ![!python run_microgpt2.py --only pokemon --steps 20000](assets/pokemon_e32_l2_h4_s20000.png)
 ---
