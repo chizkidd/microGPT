@@ -12,7 +12,7 @@ Usage:
   python run_microgpt.py --only pokemon names   # train a subset
   python run_microgpt.py --steps 500            # quick smoke-test all
 
-@karpathy (original), multi-dataset runner by Claude
+@karpathy (original), multi-dataset runner
 """
 
 import os
