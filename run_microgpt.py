@@ -8,9 +8,9 @@ Folder layout produced:
   outputs/<name>/    <- per-dataset: loss.png, ckpt.pt, samples.txt
 
 Usage:
-  python run_all.py                        # train all datasets
-  python run_all.py --only pokemon names   # train a subset
-  python run_all.py --steps 500            # quick smoke-test all
+  python run_microgpt.py                        # train all datasets
+  python run_microgpt.py --only pokemon names   # train a subset
+  python run_microgpt.py --steps 500            # quick smoke-test all
 
 @karpathy (original), multi-dataset runner by Claude
 """
