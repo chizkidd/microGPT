@@ -46,6 +46,8 @@ of suggests false the the core will was not secidate with interesting to world. 
 as the acquisities and and money startup century have
 ```
 
+#### Output (Loss Curve):
+
 ![!python run_microgpt.py --only paul_graham --steps 100000](assets/paul_graham_e64_l4_h4_s100000.png)
 
 
