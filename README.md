@@ -2,14 +2,15 @@
 
 A minimal, educational character-level GPT trained on multiple datasets, from Pokémon names to Paul Graham essays.
 
-Built on top of [@karpathy](https://github.com/karpathy)'s atomic pure, dependency-free Python-based GPT, ported to PyTorch with GPU support for speed and a multi-dataset training runner for variety.
+Built on top of [@karpathy](https://gist.github.com/karpathy/8627fe009c40f57531cb18360106ce95)'s atomic pure, dependency-free Python-based GPT, ported to PyTorch with GPU support for speed and a multi-dataset training runner for variety.
 
+---
 
 ## examples
 
 ### 1. Dataset: Paul Graham essays
- 
-```python
+
+```bash
 python run_microgpt.py \
     --only paul_graham \
     --n-embd 64 \
@@ -20,46 +21,42 @@ python run_microgpt.py \
 
 #### output:
 
-```python
+```
   seed '':
-It's hardered to advantage of the companies software. I could had a particularly of startups \
-will in a language to work them was people is another in a few a tried to be and in as people \
-such it was the story one to the consist of clear of the country our and web-sackating that \
-were the first ideas to angel why conceral the of say success,thisy are about it has and \
-so one startup is that there's a startup the time the same always they were all the people \
+It's hardered to advantage of the companies software. I could had a particularly of startups
+will in a language to work them was people is another in a few a tried to be and in as people
+such it was the story one to the consist of clear of the country our and web-sackating that
+were the first ideas to angel why conceral the of say success,thisy are about it has and
+so one startup is that there's a startup the time the same always they were all the people
 who wanted for the startup that they were some ads, t
 
   seed 'The ':
-The money including is through in the reason at the really the short is one so probably is \
-that they can't have making art. There's always in the people whose will in in effect them, \
-and business happened it to that it's hard to get our startups to make out in a recessions. \
-There is a millions and and something to take is an startup, founders of part that it important, \
-they enlike to selling bad it is also at the beauted to growth of exped to raise and be on the \
-way the schoolate of composed between every indiv
+The money including is through in the reason at the really the short is one so probably is
+that they can't have making art. There's always in the people whose will in in effect them,
+and business happened it to that it's hard to get our startups to make out in a recessions.
 
   seed 'I ':
-I wish wish that you don't have to be at the term help we trev. When I think they have to be \
-path control the best deal to say their way to have to do to for the things and the time, \
-the problem of sities intervig the our cases with but town in mostly, though is there is a \
-replace to angel of contination of the and that's angels. It'strinute to be situation a lot \
-of suggests false the the core will was not secidate with interesting to world. In the country\
-as the acquisities and and money startup century have
+I wish wish that you don't have to be at the term help we trev. When I think they have to be
+path control the best deal to say their way to have to do to for the things and the time,
+the problem of sities intervig the our cases with but town in mostly, though is there is a
+replace to angel of contination of the and that's angels.
 ```
 
-#### output (Loss Curve):
+#### loss curve:
 
-![!python run_microgpt.py --only paul_graham --steps 100000](assets/paul_graham_e64_l4_h4_s100000.png)
+![paul graham loss curve](assets/paul_graham_e64_l4_h4_s100000.png)
 
+---
 
 ### 2. Dataset: Pokémon names
 
-```python
+```bash
 python run_microgpt.py --only pokemon --steps 20000
 ```
 
 #### output:
 
-```python
+```
   sample  1: groudan
   sample  2: minior-yello
   sample  3: sandol
@@ -82,23 +79,33 @@ python run_microgpt.py --only pokemon --steps 20000
   sample 20: gagon
 ```
 
-![!python run_microgpt2.py --only pokemon --steps 20000](assets/pokemon_e32_l2_h4_s20000.png)
+#### loss curve:
+
+![pokemon loss curve](assets/pokemon_e32_l2_h4_s20000.png)
 
 ---
 
 ## files
 
 ```
-microgpt/
+chizkidd/microgpt/
+├── assets/              # example loss curves and outputs for README
+├── notebooks/
+│   └── microgpt.ipynb   # interactive notebook
 ├── gpt.py               # pure Python, dependency-free GPT (original karpathy style)
-├── run_microgpt.py      # multi-dataset runner (the main script)
-├── datasets/            # auto-downloaded, cached — never re-downloaded
-└── outputs/
-    ├── <dataset>/
-    │   ├── loss.png     # per-dataset loss curve
-    │   ├── ckpt.pt      # resumable checkpoint
-    │   └── samples.txt  # generated samples
-    └── all_losses.png   # combined loss plot across all datasets
+├── run_microgpt.py      # PyTorch/GPU multi-dataset runner (the main script)
+├── LICENSE
+└── README.md
+```
+
+Generated at runtime (not committed):
+```
+datasets/                # auto-downloaded, cached — never re-downloaded
+outputs/
+└── <dataset>/
+    ├── <dataset>_e{n_embd}_l{n_layer}_h{n_head}_s{steps}.png   # loss curve
+    ├── <dataset>_e{n_embd}_l{n_layer}_h{n_head}_s{steps}.txt   # generated samples
+    └── ckpt.pt                                                   # resumable checkpoint
 ```
 
 ---
@@ -184,6 +191,9 @@ model (overrides dataset defaults):
 training:
   --steps      N             total training steps  (use 100 for a quick smoke-test)
   --lr         F             base learning rate  (default: 0.01)
+  --beta1      F             Adam beta1  (default: 0.9)
+  --beta2      F             Adam beta2  (default: 0.95)
+  --eps        F             Adam epsilon  (default: 1e-8)
   --batch-size N             documents per gradient step  (default: 1)
   --val-every  N             compute val loss every N steps  (default: 100)
   --clip-grad  F             gradient clip norm  (0 to disable, default: 1.0)
@@ -200,7 +210,7 @@ i/o:
   --no-plot                  skip all matplotlib output (useful on headless servers)
 ```
 
-CLI flags override dataset defaults — the dataset registry is always the baseline, and anything passed on the command line wins on top. So you can use a dataset's tuned config as a starting point and just tweak one thing:
+CLI flags override dataset defaults — the dataset registry is always the baseline, and anything passed on the command line wins on top:
 
 ```bash
 # use pokemon's config but bump the model size
@@ -208,6 +218,9 @@ python run_microgpt.py --only pokemon --n-embd 64 --n-layer 4
 
 # quick test run, no plots, fixed seed
 python run_microgpt.py --steps 100 --no-plot --seed 0
+
+# custom optimizer settings
+python run_microgpt.py --only shakespeare --beta1 0.85 --beta2 0.99 --eps 1e-8
 
 # see all datasets
 python run_microgpt.py --list
@@ -228,10 +241,10 @@ Improvements over the original:
 5. **checkpointing** — save/resume via `json`
 6. **top-k sampling** — `--topk k` at inference
 7. **`generate(prompt)`** — seeded inference, not just BOS sampling
-8. **loss plot** — ASCII sparkline + matplotlib PNG
+8. **loss plot** — matplotlib PNG with dark theme
 
 ### `run_microgpt.py` — PyTorch/GPU multi-dataset runner
-The main script. Same GPT-2 style architecture as `gpt.py` but built with `torch.nn` for speed — runs on CUDA if available, falls back to CPU automatically. Wraps everything into a `train(name, url, **kwargs)` function and iterates over the dataset registry, auto-downloading and caching each dataset, then produces a per-dataset output folder and a combined `all_losses.png` at the end.
+The main script. Same GPT-2 style architecture as `gpt.py` but built with `torch.nn` for speed — runs on CUDA if available, falls back to CPU automatically. Wraps everything into a `train(name, url, **kwargs)` function and iterates over the dataset registry, auto-downloading and caching each dataset, then produces a per-dataset output folder and a combined loss plot at the end.
 
 All 8 improvements from `gpt.py` are carried over, plus:
 - **live loss plot** — matplotlib window updates in real time during training (one per dataset)
@@ -263,11 +276,11 @@ After training, each dataset produces:
 
 ```
 outputs/names/
-├── loss.png      # train (raw), train (ema), val loss curves
-├── ckpt.pt       # full model + optimizer state, resumable
-└── samples.txt   # generated samples at inference temperature
+├── names_e16_l1_h4_s2000.png    # train (raw), train (ema), val loss curves
+├── names_e16_l1_h4_s2000.txt    # generated samples at inference temperature
+└── ckpt.pt                       # full model + optimizer state, resumable
 
-outputs/all_losses.png   # all datasets in one figure
+outputs/all_losses_20260214_143022.png   # all datasets in one figure
 ```
 
 Sample output after 2000 steps on `names`:
@@ -279,21 +292,20 @@ Sample output after 2000 steps on `names`:
   5: maelis
 ```
 
-Sample output after 5000 steps on `paul_graham`:
+Sample output after 50000 steps on `paul_graham`:
 ```
   seed 'The ':
-  The best way to get good at something is to do it a lot. This sounds
-  obvious, but most people don't actually do it. They read about it, or
-  they think about it, but they don't sit down and grind through the
-  uncomfortable early phase where you're still bad...
+  The money including is through in the reason at the really the short is one so probably is
+  that they can't have making art. There's always in the people whose will in in effect them,
+  and business happened it to that it's hard to get our startups to make out in a recessions.
 ```
 
 ---
 
-## Credit
+## credit
 
-- Original Karpathy microGPT: [@karpathy](https://gist.github.com/karpathy/8627fe009c40f57531cb18360106ce95) 
-    - Karpathy blog [writeup](https://karpathy.github.io/2026/02/12/microgpt/) on microgpt.
+- Original Karpathy microGPT: [@karpathy](https://gist.github.com/karpathy/8627fe009c40f57531cb18360106ce95)
+    - Karpathy blog [writeup](https://karpathy.github.io/2026/02/12/microgpt/) on microgpt
 - PG essays dataset: [@sgoel97](https://github.com/sgoel97/essay-datasets)
 - Baby names: [karpathy/makemore](https://github.com/karpathy/makemore)
 - Shakespeare: [karpathy/char-rnn](https://github.com/karpathy/char-rnn)
