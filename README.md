@@ -108,7 +108,7 @@ outputs/
 └── <dataset>/
     ├── <dataset>_e{n_embd}_l{n_layer}_h{n_head}_s{steps}.png   # loss curve
     ├── <dataset>_e{n_embd}_l{n_layer}_h{n_head}_s{steps}.txt   # generated samples
-    └── ckpt.pt                                                   # resumable checkpoint
+    └── ckpt.pt                                                 # resumable checkpoint
 ```
 
 ---
