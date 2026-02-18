@@ -286,23 +286,6 @@ outputs/names/
 outputs/all_losses_20260214_143022.png   # all datasets in one figure
 ```
 
-Sample output after 2000 steps on `names`:
-```
-  1: kailyn
-  2: braven
-  3: thessaly
-  4: orin
-  5: maelis
-```
-
-Sample output after 50000 steps on `paul_graham`:
-```
-  seed 'The ':
-  The money including is through in the reason at the really the short is one so probably is
-  that they can't have making art. There's always in the people whose will in in effect them,
-  and business happened it to that it's hard to get our startups to make out in a recessions.
-```
-
 ---
 
 ## credit
