@@ -275,15 +275,25 @@ Differences from GPT-2: no biases, RMSNorm instead of LayerNorm, ReLU instead of
 
 ## output
 
-After training, each dataset produces:
+After training, the names dataset trained for 2000 steps (embedding dimension of 16, 1 layer, 4 attention heads) produces:
 
 ```
 outputs/names/
-├── names_e16_l1_h4_s2000.png    # train (raw), train (ema), val loss curves
-├── names_e16_l1_h4_s2000.txt    # generated samples at inference temperature
-└── ckpt.pt                      # full model + optimizer state, resumable
+├── names_e16_l1_h4_s2000_train_raw.png          # train raw only
+├── names_e16_l1_h4_s2000_train_ema.png          # train ema only
+├── names_e16_l1_h4_s2000_train_raw_ema.png      # train raw + ema
+├── names_e16_l1_h4_s2000_train_ema_val.png      # train ema + val (key diagnostic)
+├── names_e16_l1_h4_s2000_train_raw_ema_val.png  # train raw + ema + val (full)
+├── names_e16_l1_h4_s2000.txt                    # generated samples at inference temperature
+└── ckpt.pt                                      # full model + optimizer state, resumable
 
-outputs/all_losses_20260214_143022.png   # all datasets in one figure
+outputs/  (only when running 1+ datasets)
+├── all_losses_20260214_143022_train_raw.png         # all datasets: train raw only
+├── all_losses_20260214_143022_train_ema.png         # all datasets: train ema only
+├── all_losses_20260214_143022_train_raw_ema.png     # all datasets: train raw + ema
+├── all_losses_20260214_143022_train_ema_val.png     # all datasets: train ema + val
+└── all_losses_20260214_143022_train_raw_ema_val.png # all datasets: full
+
 ```
 
 ---
