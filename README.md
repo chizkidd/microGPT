@@ -97,6 +97,7 @@ chizkidd/microgpt/
 │   └── microgpt.ipynb   # interactive notebook
 ├── gpt.py               # pure Python, dependency-free GPT (original karpathy style)
 ├── run_microgpt.py      # PyTorch/GPU multi-dataset runner (the main script)
+├── probe.py             # Inference/Streaming
 ├── LICENSE
 └── README.md
 ```
