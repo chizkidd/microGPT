@@ -1,3 +1,5 @@
+![visitor badge](https://visitor-badge.laobi.icu/badge?page_id=chizkidd.microGPT)
+
 ![all losses](assets/all_losses_20260215_111719_train_raw_ema.png)
 
 
